@@ -114,9 +114,7 @@ public class MaximalRectangle_BinaryMatrix {
                 { 1, 1, 1, 1 },
                 { 1, 1, 0, 0 },
         };  //result should be 8
-
-        System.out.println(height[0]);
-//        System.out.print("Area of maximum rectangle is "+ maxRectangle(height, rows, columns));
+        System.out.print("Area of maximum rectangle is "+ maxRectangle(height, rows, columns));
     }
     }
 
