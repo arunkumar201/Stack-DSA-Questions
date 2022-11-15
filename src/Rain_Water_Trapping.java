@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Rain_Water_Trapping {
-    public static int trap(int[] a) {
+    public static int trap_SC_ON(int[] a) {
         //a is a Height Array
        int n=a.length;
        if(n==0 || n==1){
@@ -41,6 +41,39 @@ public class Rain_Water_Trapping {
 //           System.out.println(min[i]);
        }
        return Max_TrappedWater;
+    }
+
+    public static  int trap(int [] a){
+        int n=a.length;
+        if(n<=2){
+            return 0;
+        }
+        int maxTrappedWater=0;
+        int left=0;
+        int right=n-1;
+        int leftMaxHeight=0;
+        int rightMaxHeight=0;
+        while (left <= right) {
+            if(a[left]< a[right]) {
+                if (a[left] >leftMaxHeight) {
+                    leftMaxHeight = a[left];
+                } else {
+                    maxTrappedWater += leftMaxHeight - a[left];
+                    left++;
+                }
+            }
+            else {
+                    if (a[right]>rightMaxHeight) {
+                        rightMaxHeight = a[right];
+
+                    } else {
+                        maxTrappedWater += rightMaxHeight - a[right];
+                        right--;
+                    }
+            }
+
+            }
+        return maxTrappedWater;
     }
 
     public static void main(String[] args) {
