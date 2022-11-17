@@ -18,31 +18,25 @@ public class LeetCode_1365 {
         }
 return res;
     }
-    public static int[] smallerNumbersThanCurrent(int[] a) {
-        int n = a.length;
-        int res[]=new int[n];
-        HashMap<Integer,Integer> mp=new HashMap<Integer,Integer>();
-        for(int i:a){
-            if(mp.containsKey(i)){
-                mp.put(i,mp.get(i)+1);
-            }
-            else{
-                mp.put(i,1);
+    public static int[] smallerNumbersThanCurrent(int[] nums) {
+        HashMap<Integer,Integer> m= new HashMap<>();
+        int[] nums1= nums.clone();
+        Arrays.sort(nums);
+        int[] result= new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            if(!m.containsKey(nums[i])){
+                m.put(nums[i],m.getOrDefault(nums[i],i));
             }
         }
-
-        for(int i:a){
-            if(5==0){
-                res[mp.get(i)-1]=i;
-            }
-
+        for(int j=0;j<nums.length;j++){
+            result[j]=m.get(nums1[j]);
         }
 
-        return null;
+        return result;
     }
     public static void main(String[] args) {
         int a[]={8,1,2,2,3};
-        int res[]=smallerNumbersThanCurrent_BruteForce(a);
+        int res[]=smallerNumbersThanCurrent(a);
 
         System.out.println("Final result is " + Arrays.toString(res));
     }
